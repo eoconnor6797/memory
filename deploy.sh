@@ -11,6 +11,6 @@ if [ -d ~/www/memory ]; then
 	mv ~/www/memory ~/old/$NOW
 fi
 
-cd ~/www/memory && tar xzvf memory.tar.gz
+cd (~/www/memory && tar xzvf ~/memory.tar.gz)
 
 
