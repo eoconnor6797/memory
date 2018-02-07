@@ -4,7 +4,7 @@ export MIX_ENV=prod
 
 mkdir -p ~/www
 mkdir -p ~/old
-
+mkdir -p ~/www/memory
 NOW=`date +%s`
 if [ -d ~/www/memory ]; then
 	echo mv ~/www/memory ~/old/$NOW
