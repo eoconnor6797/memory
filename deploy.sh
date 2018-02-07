@@ -13,6 +13,6 @@ fi
 
 mkdir -p ~/www/memory
 
-cd (~/www/memory && tar xzvf ~/memory.tar.gz)
+cd ~/www/memory && tar xzvf ~/memory.tar.gz
 
 
