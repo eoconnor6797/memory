@@ -1,8 +1,16 @@
 #!/bin/bash
-
 export PORT=5100
+export MIX_ENV=prod
 
-cd ~/www/memory
-./bin/memory stop || true
-./bin/memory start
+mkdir -p ~/www
+mkdir -p ~/old
+
+NOW=`date +%s`
+if [ -d ~/www/memory ]; then
+	echo mv ~/www/memory ~/old/$NOW
+	mv ~/www/memory ~/old/$NOW
+fi
+
+(cd ~/www/memory && tar xzvf memory.tar.gz)
+
 
