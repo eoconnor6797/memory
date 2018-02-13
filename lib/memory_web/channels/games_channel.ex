@@ -31,8 +31,9 @@ defmodule MemoryWeb.GamesChannel do
     {:reply, {:ok, %{"game" => game}}, socket}
   end
 
-  def handle_in("reset", socket) do
+  def handle_in("reset", _, socket) do
     game = Game.new()
+    Memory.Agent.put(socket.assigns[:name], game)
     socket = assign(socket, :game, game)
     {:reply, {:ok, %{"game" => game}}, socket}
   end
