@@ -19,7 +19,6 @@ class Demo extends React.Component {
         super(props);
         this.channel = props.channel;
         this.state = { guess1 : 17, guess2 : 17, cards : PlaceHolder(), score : 0 };
-        console.log(this.channel);
         this.channel.join()
             .receive("ok", this.gotView.bind(this))
             .receive("error", resp => { console.log("Unable to join channel", resp) }) ;
@@ -27,7 +26,6 @@ class Demo extends React.Component {
 
     gotView(view) {
         let c = this.state.cards
-        console.log("got the state", view.game);
         this.setState(view.game);
         if (this.state.guess2 != 17) {
             this.checkMatch(this.state.guess1, this.state.guess2)
