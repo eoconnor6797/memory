@@ -21,7 +21,12 @@ class Demo extends React.Component {
         this.state = { guess1 : 17, guess2 : 17, cards : PlaceHolder(), score : 0 };
         this.channel.join()
             .receive("ok", this.gotView.bind(this))
-            .receive("error", resp => { console.log("Unable to join channel", resp) }) ;
+            .receive("error", resp => { console.log("Unable to join channel", resp) });
+        this.channel.on("guess", this.handle_msg.bind(this));
+    }
+
+    handle_msg(msg) {
+        this.setState(msg)
     }
 
     gotView(view) {
