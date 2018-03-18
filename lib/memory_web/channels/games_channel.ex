@@ -8,7 +8,6 @@ defmodule MemoryWeb.GamesChannel do
     if authorized?(payload) do
       game = Memory.Agent.get(name) || Game.new()
       Memory.Agent.put(name, game)
-      IO.inspect(game)
       socket = socket
       |> assign(:game, game)
       |> assign(:name, name)
@@ -40,6 +39,7 @@ defmodule MemoryWeb.GamesChannel do
     game = Game.new()
     Memory.Agent.put(socket.assigns[:name], game)
     socket = assign(socket, :game, game)
+    broadcast_from socket, "reset", game
     {:reply, {:ok, %{"game" => game}}, socket}
   end
 

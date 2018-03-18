@@ -23,6 +23,7 @@ class Demo extends React.Component {
             .receive("ok", this.gotView.bind(this))
             .receive("error", resp => { console.log("Unable to join channel", resp) });
         this.channel.on("guess", this.handle_msg.bind(this));
+        this.channel.on("reset", this.handle_msg.bind(this));
     }
 
     handle_msg(msg) {
